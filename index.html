@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Буккроссинг-сообщество</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+
+<html>
+<head>
+    <title>Буккроссинг-сообщество</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+
+
+    <style>
+        .highlighted-block {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 14pt;
+            background-color: #f5f5dc;
+            border: 1px solid #8b4513;
+            padding: 2cm 1cm 2cm 3cm;
+            text-indent: 1.5cm;
+            color: #4b2e1e;
+        }
+
+        .highlighted-block p::first-letter {
+            font-size: 18pt;
+            font-weight: bold;
+            color: #8b4513;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #f5f5dc;
+        }
+
+        table th {
+            text-align: center;
+            border: 1px solid #8b4513;
+            background-color: #e6d3b1; 
+            padding: 10px;
+        }
+
+        table td {
+            border: 1px solid #8b4513;
+            padding: 10px;
+            color: #4b2e1e;
+        }
+
+        /* Первый столбец выровнен по ширине */
+        table td:first-child {
+            text-align: justify;
+        }
+
+        /* Второй столбец выровнен по центру */
+        table td:nth-child(2) {
+            text-align: center;
+        }
+
+        /* Четные столбцы со светлым фоном */
+        table td:nth-child(even) {
+            background-color: #e6d3b1;
+        }
+
+        /* Нечетные столбцы с белым фоном */
+        table td:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        img {
+            float: right;
+            margin: 10px;
+            border: 1px solid #8b4513;
+        }
+        
+        ul li ul li {
+            list-style-type: circle;
+        }
+
+        a {
+            color: #8b4513;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #4b2e1e;
+            text-decoration: underline;
+        }
+
+        nav a {
+            color: #a0522d;
+        }
+
+        nav a:hover {
+            color: #9ACD32;
+        }
+button {
+    transition: transform 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+        /* Возможности CSS3 */
+        header {
+            background: linear-gradient(to right, #8b4513, #deb887);
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+
+        form {
+            position: relative;
+            top: 20px;
+            left: 10px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #8b4513;
+        }
+
+        footer a:hover {
+            color: #4b2e1e;
+        }
+
+        ul {
+            color: #4b2e1e;
+        }
+
+        p1 {
+            animation-duration: 5s;
+            animation-name: slidein;
+        }
+
+        @keyframes slidein {
+            from {
+                margin-left: 100%;
+                width: 300%;
+            }
+
+            to {
+                margin-left: 0%;
+                width: 100%;
+            }
+        }
+.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-theme button {
+    background-color: #555;
+    color: #fff;
+}
+
+    </style>
+
+</head>
+<body>
+<header>
+    <h1>Буккроссинг-сообщество</h1>
+    <p1 class="custom-span">Обмен книгами между любителями чтения</p1>
+    <nav>
+        <ul>
+            <li><a href="#wh">Что такое буккроссинг?</a></li>
+            <li><a href="a.html">Правила буккроссинга</a></li>
+            <li><a href="https://trends.rbc.ru/trends/sharing/607070449a79472dbc24f60e" target="_blank">Узнать больше</a></li>
+        </ul>
+    </nav>
+</header>
+
+<button id="toggleThemeButton">Переключить тему</button>
+<button id="goUp" style="display:none; position:fixed; bottom:20px; right:20px; padding:10px 15px; font-size:16px;">⬆️</button>
+
+<main>
+    <h2 id="wh">Что такое буккроссинг?</h2>
+    <div class="highlighted-block">
+        <p><strong>Буккроссинг</strong> – это международное движение, цель которого состоит в свободном обмене книгами. Люди оставляют книги в общественных местах, чтобы другие могли их забрать, прочитать и передать дальше.</p>
+ </div>
+
+
+
+<h2>Время чтение книги</h2>
+<button onclick="startReading()">Старт</button>
+<button onclick="stopReading()">Стоп</button>
+<p>Общее время чтения: <span id="totalTime">0</span> секунд</p>
+
+
+
+
+    <h3>Как принять участие?</h3>
+<svg width="500" height="300">
+  <!-- Полка -->
+  <rect x="50" y="200" width="400" height="10" fill="#8B4513" />
+
+  <!-- Книга -->
+  <rect id="book" x="50" y="-100" width="50" height="150" fill="#F4A460" rx="10" ry="10">
+    <animate attributeName="y" from="-100" to="50" dur="2s" fill="freeze" />
+    <animateTransform attributeName="transform" type="rotate" from="0 75 75" to="10 75 75" begin="2s" dur="1s" fill="freeze" />
+  </rect>
+
+  <!-- Дополнительные книги -->
+  <rect class="book" x="120" y="50" width="50" height="150" fill="#4682B4" rx="10" ry="10" />
+  <rect class="book" x="190" y="50" width="50" height="150" fill="#6A5ACD" rx="10" ry="10" />
+  <rect class="book" x="260" y="50" width="50" height="150" fill="#32CD32" rx="10" ry="10" />
+  <rect class="book" x="330" y="50" width="50" height="150" fill="#FF6347" rx="10" ry="10" />
+</svg>
+
+
+    <p2>Принять участие очень просто:</p2>
+    <ul>
+        <li>Оставьте книгу в публичном месте;</li>
+        <li>Найдите книгу через наш сайт или специальное приложение;</li>
+        <li>Поделитесь книгой, которую вы прочитали, с другими.</li>
+    </ul>
+ <canvas id="c" width="600" height="400"></canvas>
+    <script>
+        const ctx = c.getContext('2d');
+        let x = 50, y = 200, dx = 2, dy = 1;
+        function draw() {
+            ctx.clearRect(0, 0, 600, 400);
+            ctx.fillStyle = '#000';
+            ctx.fillRect(x - 10, y - 10, 20, 20); // Уменьшенный прямоугольник
+            ctx.beginPath();
+            ctx.arc(x, y, 10, 0, 2 * Math.PI); // Круг внутри
+            ctx.fill();
+            x += dx; y += dy;
+            if (x > 600 || x < 0) dx = -dx; 
+            if (y > 400 || y < 0) dy = -dy; 
+            requestAnimationFrame(draw);
+        }
+        draw();
+    </script>
+    <h3>Оставить заявку на обмен книгами</h3>
+    <form onsubmit="Sendform(event)">
+        <label for="name">Ваше имя:</label>
+        <input type="text" id="name" name="name" placeholder="Введите ваше имя" required><br>
+
+        <label for="email">Ваш email:</label>
+        <input type="email" id="email" name="email" placeholder="Введите ваш email" required><br>
+
+        <label for="book-title">Название книги:</label>
+        <input type="text" id="book-title" name="title" placeholder="Введите название книги" required><br>
+
+        <label for="book-author">Автор книги:</label>
+        <input type="text" id="book-author" name="author" placeholder="Введите автора книги" required><br>
+
+        <label for="book-description">Описание книги:</label>
+        <textarea id="book-description" name="description" rows="4" placeholder="Опишите книгу" required></textarea><br>
+
+        <label for="preferred-exchange">Предпочтительная книга для обмена:</label>
+        <input type="text" id="preferred-exchange" name="preferred_exchange" placeholder="Введите название книги, которую вы хотите получить" required><br>
+
+        <input type="submit" value="Отправить заявку">
+
+    </form>
+<main id="app">
+<div>
+    <h3>Популярные книги для буккроссинга</h3>
+<button @click="сортироватьПоРейтингу">Сортировать книги по рейтингу</button>
+
+<table>
+        <caption>Популярные книги для обмена</caption>
+        <thead>
+            <tr>
+         <th>Обложка</th>
+         <th>Название книги</th>
+         <th>Автор</th>
+         <th>Жанр</th>
+         <th>Рейтинг</th>
+   	 <th>Подробнее</th>
+            </tr>
+        </thead>
+        <tbody>
+	 <tr v-for="(book, index) in books" :key="index">
+                    <td><img :src="book.обложка" :alt="'Обложка ' + book.название" width="100"></td>
+                    <td>{{ book.название }}</td>
+                    <td>{{ book.автор }}</td>
+                    <td>{{ book.жанр }}</td>
+                    <td>{{ book.рейтинг }}</td>
+ <td><button @click="toggleDetails(index)">Показать/Скрыть</button></td>
+                </tr>   
+        </tbody>
+    </table>
+
+
+
+
+<div v-for="(book, index) in books" :key="'details-' + index" v-if="book.showDetails">
+        <h4>Описание:</h4>
+        <p>{{ book.описание || "Описание пока нет." }}</p>
+    </div>
+
+
+
+    <h3>Добавить новую книгу</h3>
+        <form @submit.prevent="addBook">
+            <label>Название книги:</label>
+            <input v-model="newBook.название" placeholder="Введите название" required /><br />
+            <label>Автор:</label>
+            <input v-model="newBook.автор" placeholder="Введите автора" required /><br />
+            <label>Жанр:</label>
+            <input v-model="newBook.жанр" placeholder="Введите жанр" required /><br />
+            <label>Обложка (URL):</label>
+            <input v-model="newBook.обложка" placeholder="Введите URL обложки" required /><br />
+            <label>Рейтинг:</label>
+            <input type="number" v-model="newBook.рейтинг" min="1" max="5" required /><br />
+	    <label>Описание:</label>
+    	    <textarea v-model="newBook.описание" placeholder="Введите описание книги" required></textarea><br />
+            <button type="submit">Добавить книгу</button>
+        </form>
+</main>
+    <h3>Правила буккроссинга</h3>
+    <ul>
+        <li>Выберите книгу для обмена, которая в хорошем состоянии.
+            <ul>
+                <li>Она должна быть без повреждений и в хорошем состоянии.</li>
+                <li>Выбирайте книги, которые могут понравиться другим.</li>
+            </ul>
+        </li>
+        <li>Зарегистрируйте свою книгу на сайте.</li>
+        <li>Оставьте книгу в общественном месте и сообщите об этом на сайте.</li>
+    </ul>
+</main>
+
+<footer>
+    <p>Переходы по страницам: 
+        <a href="a.html">Правила</a> 
+        | <a href="b.html">О нас</a>
+    </p>
+</footer>
+<script>
+
+const книги = [
+    { название: "Мастер и Маргарита", автор: "Михаил Булгаков", жанр: "Фантастика", рейтинг: 5 },
+    { название: "Преступление и наказание", автор: "Фёдор Достоевский", жанр: "Классика", рейтинг: 4 },
+    { название: "Гарри Поттер и философский камень", автор: "Дж. К. Роулинг", жанр: "Фэнтези", рейтинг: 5 },
+    { название: "451 градус по Фаренгейту", автор: "Рэй Брэдбери", жанр: "Научная фантастика", рейтинг: 3 },
+    { название: "1984", автор: "Джордж Оруэлл", жанр: "Дистопия", рейтинг: 5 },
+    { название: "Гордость и предубеждение", автор: "Джейн Остин", жанр: "Роман", рейтинг: 4 }
+];
+
+function получитьМинимальныйРейтинг() {
+    let рейтинг = prompt("Введите минимальный рейтинг книг (от 1 до 5):");
+    return parseInt(рейтинг);
+}
+
+
+function рекомендоватьКниги(минимальныйРейтинг) {
+    let рекомендованныеКниги = []; 
+    for (let i = 0; i < книги.length; i++) {
+        if (книги[i].рейтинг >= минимальныйРейтинг) {
+            рекомендованныеКниги.push(книги[i]);
+        }
+    }
+
+    return рекомендованныеКниги;
+}
+
+function отобразитьРекомендации() {
+    let минимальныйРейтинг = получитьМинимальныйРейтинг();
+
+    if (isNaN(минимальныйРейтинг) || минимальныйРейтинг < 1 || минимальныйРейтинг > 5) {
+        alert("Неверный рейтинг. Попробуйте снова.");
+        return;
+    }
+
+    let рекомендованныеКниги = рекомендоватьКниги(минимальныйРейтинг);
+
+    if (рекомендованныеКниги.length === 0) {
+        alert("Книг с таким рейтингом нет.");
+    } else {
+        let сообщение = "Рекомендованные книги:\n";
+for (let i = 0; i < рекомендованныеКниги.length; i++) {
+    сообщение += ${i + 1}. ${рекомендованныеКниги[i].название} — ${рекомендованныеКниги[i].автор} (${рекомендованныеКниги[i].жанр}, Рейтинг: ${рекомендованныеКниги[i].рейтинг})\n;
+}
+
+        alert(сообщение);
+    }
+}
+
+
+отобразитьРекомендации()
+</script>
+<script>
+
+
+
+    function Sendform(event) {
+    event.preventDefault();
+    alert("Спасибо за отправку заявки!");
+    window.location.href = "спасибо.html";
+}
+
+</script>
+<script>
+    let timer;
+    let totalSeconds = 0;
+    let readingSeconds = 0;
+
+    function startReading() {
+        if (!timer) {
+            timer = setInterval(() => {
+                readingSeconds++;
+                document.getElementById('totalTime').textContent = totalSeconds + readingSeconds;
+            }, 1000);
+        }
+    }
+
+    function stopReading() {
+        if (timer) {
+            clearInterval(timer);
+            timer = null;
+            totalSeconds += readingSeconds;
+            readingSeconds = 0;
+        }
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $(".highlighted-block").click(function () {
+            $(this).css("font-size", "18pt");
+        });
+
+       $('#toggleThemeButton').click(function () {
+        $('body').toggleClass('dark-theme');
+        $('body').effect('highlight', {}, 1000);
+    });
+
+
+        $("button:contains('Добавить книгу')").click(function () {
+            alert("Новая книга добавлена в список!");
+        });
+    });
+</script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+           books: [
+                { название: "Мастер и Маргарита", автор: "Михаил Булгаков", жанр: "Фантастика", рейтинг: 5, обложка: "img/master.jpg", описание: "Магический реализм в центре Москвы.", showDetails: false },
+                { название: "Преступление и наказание", автор: "Фёдор Достоевский", жанр: "Классика", рейтинг: 4, обложка: "img/cri.jpg", описание: "История преступления и наказания.", showDetails: false },
+                { название: "Гарри Поттер и философский камень", автор: "Дж. К. Роулинг", жанр: "Фэнтези", рейтинг: 5, обложка: "img/potter.jpg", описание: "Приключения юного волшебника Гарри Поттера.", showDetails: false },
+                { название: "451 градус по Фаренгейту", автор: "Рэй Брэдбери", жанр: "Научная фантастика", рейтинг: 3, обложка: "img/fahrenheit451.jpg", описание: "Общество, в котором книги сжигаются.", showDetails: false },
+                { название: "1984", автор: "Джордж Оруэлл", жанр: "Дистопия", рейтинг: 5, обложка: "img/1984.jpg", описание: "Будущее, где правительство следит за каждым шагом.", showDetails: false },
+                { название: "Гордость и предубеждение", автор: "Джейн Остин", жанр: "Роман", рейтинг: 4, обложка: "img/pride.jpg", описание: "Любовные отношения в английской аристократии.", showDetails: false }
+            ],
+            newBook: {
+                название: '',
+                автор: '',
+                жанр: '',
+                обложка: '',
+                рейтинг: 1,
+                описание: ''
+            }
+        },
+	  methods: {
+            addBook() {
+                if (this.newBook.название && this.newBook.автор && this.newBook.жанр && this.newBook.обложка && this.newBook.рейтинг) {
+                    this.newBook.описание = this.newBook.описание || "Описание пока нет.";
+                    this.books.push({ ...this.newBook, showDetails: false });
+                    this.newBook = { название: '', автор: '', жанр: '', обложка: '', рейтинг: 1, описание: '' };
+                } else {
+                    alert("Пожалуйста, заполните все обязательные поля.");
+                }
+            },
+            toggleDetails(index) {
+                this.books[index].showDetails = !this.books[index].showDetails;
+            }
+        }
+    });
+</script>
+<script>
+$("button:contains('Добавить книгу')").click(function () {
+    Swal.fire({
+        title: 'Новая книга добавлена!',
+        text: 'Книга успешно добавлена в список.',
+        icon: 'success',
+        confirmButtonText: 'Ок'
+    });
+});
+
+
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('#goUp').fadeIn();
+            } else {
+                $('#goUp').fadeOut();
+            }
+        });
+
+        $('#goUp').click(function () {
+            $('html, body').animate({ scrollTop: 0 }, 500);
+        });
+    });
+</script>
+    <h1>Список книг</h1>
+    <div id="filter">
+        <label for="genreFilter">Фильтр по жанру:</label>
+        <select id="genreFilter">
+            <option value="">Все</option>
+            <option value="Роман">Роман</option>
+            <option value="Классика">Классика</option>
+            <option value="Антиутопия">Антиутопия</option>
+            <option value="Фэнтези">Фэнтези</option>
+	    <option value="Сатира">Сатира</option>
+        </select>
+    </div>
+    <ul id="bookList"></ul>
+    <table>
+        <thead>
+            <tr>
+                <th onclick="sortTable(0)">Название</th>
+                <th onclick="sortTable(1)">Автор</th>
+                <th onclick="sortTable(2)">Год</th>
+                <th onclick="sortTable(3)">Жанр</th>
+            </tr>
+        </thead>
+        <tbody id="bookTable"></tbody>
+    </table>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('books.xml')
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const xml = parser.parseFromString(data, "application/xml");
+                    const books = Array.from(xml.getElementsByTagName('book'));
+
+                    const list = document.getElementById('bookList');
+                    const table = document.getElementById('bookTable');
+                    const genreFilter = document.getElementById('genreFilter');
+
+
+
+
+
+                    const renderBooks = (filteredBooks) => {
+                        list.innerHTML = '';
+                        table.innerHTML = '';
+                        filteredBooks.forEach(book => {
+                            const title = book.getElementsByTagName('title')[0].textContent;
+                            const author = book.getElementsByTagName('author')[0].textContent;
+                            const year = book.getElementsByTagName('year')[0].textContent;
+                            const genre = book.getElementsByTagName('genre')[0].textContent;
+
+                            // Список
+                            const li = document.createElement('li');
+                            li.textContent = `${title} - ${author} (${year})`;
+                            list.appendChild(li);
+
+                            // Таблица
+                            const row = document.createElement('tr');
+                            row.innerHTML = `<td>${title}</td><td>${author}</td><td>${year}</td><td>${genre}</td>`;
+                            table.appendChild(row);
+                        });
+                    };
+
+                    genreFilter.addEventListener('change', () => {
+                        const genre = genreFilter.value;
+                        const filteredBooks = genre 
+                            ? books.filter(book => book.getElementsByTagName('genre')[0].textContent === genre)
+                            : books;
+                        renderBooks(filteredBooks);
+                    });
+
+                    renderBooks(books);
+                });
+
+            // Сортировка таблицы
+            window.sortTable = (n) => {
+                const rows = Array.from(document.querySelectorAll("#bookTable tr"));
+                const sortedRows = rows.sort((a, b) => {
+                    const aText = a.cells[n].textContent.toLowerCase();
+                    const bText = b.cells[n].textContent.toLowerCase();
+                    return aText.localeCompare(bText);
+                });
+                document.getElementById('bookTable').append(...sortedRows);
+            };
+        });
+    </script>
+</body>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books>
+    <book>
+        <title>Мастер и Маргарита</title>
+        <author>Михаил Булгаков</author>
+        <year>1966</year>
+        <genre>Роман</genre>
+    </book>
+    <book>
+        <title>Преступление и наказание</title>
+        <author>Федор Достоевский</author>
+        <year>1866</year>
+        <genre>Классика</genre>
+    </book>
+    <book>
+        <title>1984</title>
+        <author>Джордж Оруэлл</author>
+        <year>1949</year>
+        <genre>Антиутопия</genre>
+    </book>
+    <book>
+        <title>Война и мир</title>
+        <author>Лев Толстой</author>
+        <year>1869</year>
+        <genre>Исторический роман</genre>
+    </book>
+    <book>
+        <title>Гарри Поттер и философский камень</title>
+        <author>Джоан Роулинг</author>
+        <year>1997</year>
+        <genre>Фэнтези</genre>
+    </book>
+    <book>
+        <title>Алхимик</title>
+        <author>Пауло Коэльо</author>
+        <year>1988</year>
+        <genre>Роман</genre>
+    </book>
+    <book>
+        <title>Три товарища</title>
+        <author>Эрих Мария Ремарк</author>
+        <year>1936</year>
+        <genre>Драма</genre>
+    </book>
+    <book>
+        <title>Улисс</title>
+        <author>Джеймс Джойс</author>
+        <year>1922</year>
+        <genre>Классика</genre>
+    </book>
+    <book>
+        <title>Человек-невидимка</title>
+        <author>Герберт Уэллс</author>
+        <year>1897</year>
+        <genre>Научная фантастика</genre>
+    </book>
+    <book>
+        <title>Анна Каренина</title>
+        <author>Лев Толстой</author>
+        <year>1877</year>
+        <genre>Роман</genre>
+    </book>
+    <book>
+        <title>Портрет Дориана Грея</title>
+        <author>Оскар Уайльд</author>
+        <year>1890</year>
+        <genre>Философский роман</genre>
+    </book>
+    <book>
+        <title>Собачье сердце</title>
+        <author>Михаил Булгаков</author>
+        <year>1925</year>
+        <genre>Сатира</genre>
+    </book>
+    <book>
+        <title>Десять негритят</title>
+        <author>Агата Кристи</author>
+        <year>1939</year>
+        <genre>Детектив</genre>
+    </book>
+    <book>
+        <title>Гордость и предубеждение</title>
+        <author>Джейн Остин</author>
+        <year>1813</year>
+        <genre>Роман</genre>
+    </book>
+    <book>
+        <title>Маленький принц</title>
+        <author>Антуан де Сент-Экзюпери</author>
+        <year>1943</year>
+        <genre>Философская сказка</genre>
+    </book>
+</books>
